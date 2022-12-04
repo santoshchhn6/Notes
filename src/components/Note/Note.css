@@ -1,0 +1,16 @@
+.note {
+  border: 1px solid hsla(0, 0%, 0%, 0.1);
+  border-radius: 5px;
+  width: 250px;
+  height: 160px;
+  padding: 10px;
+  background: hsl(49, 100%, 90%);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.note > p {
+  /* border: 1px solid gray; */
+  height: 90px;
+  margin: 5px 0;
+  overflow: hidden;
+}
