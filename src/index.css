@@ -44,7 +44,7 @@ input {
   margin: 5px;
 }
 
-textarea {
+.textarea {
   width: 100%;
   resize: none;
   padding: 5px 10px;

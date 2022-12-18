@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OutsideAlerter from "../../CustomHook/customHook";
+import TextareaAutosize from "react-textarea-autosize";
 import { add_Note, hide_AddNote, show_AddNote } from "../../redux/actions";
 import "./AddNote.css";
 
@@ -66,7 +67,8 @@ const AddNote = () => {
             value={note.title}
             onChange={saveNote}
           />
-          <textarea
+          <TextareaAutosize
+            className="textarea"
             name="desc"
             id="note"
             placeholder="Take a note..."
