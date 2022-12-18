@@ -2,17 +2,32 @@
   padding: 0;
   margin: 0;
   outline: 0;
-  border: 0;
+  /* border: 0; */
   box-sizing: border-box;
 }
 
+:root {
+  --red: hsl(0, 100%, 90%);
+  --orange: hsl(30, 100%, 90%);
+  --yellow: hsl(49, 100%, 90%);
+  --olive: hsl(90, 100%, 90%);
+  --green: hsl(120, 100%, 90%);
+  --bluegreen: hsl(150, 100%, 90%);
+  --cyan: hsl(180, 100%, 90%);
+  --skyblue: hsl(210, 100%, 90%);
+  --blue: hsl(240, 100%, 90%);
+  --violet: hsl(270, 100%, 90%);
+  --pink: hsl(300, 100%, 90%);
+  --redpink: hsl(330, 100%, 90%);
+}
+
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: rgb(80, 80, 80);
 }
 
 code {
@@ -24,7 +39,15 @@ input {
   border: 1px solid gray;
   border-radius: 5px;
   height: 30px;
-  width: 300px;
+
   padding-left: 10px;
+  margin: 5px;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  padding: 5px 10px;
+  border-radius: 5px;
   margin: 5px;
 }

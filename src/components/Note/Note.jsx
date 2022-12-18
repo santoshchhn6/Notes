@@ -3,10 +3,9 @@ import "./Note.css";
 
 const Note = ({ note }) => {
   return (
-    <div className="note">
+    <div className="note" style={{ backgroundColor: note.color }}>
       <h3>{note.title}</h3>
-      <p>{note.note}</p>
-      <i>{note.date}</i>
+      <p>{note.desc}</p>
     </div>
   );
 };

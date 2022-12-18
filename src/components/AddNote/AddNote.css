@@ -1,7 +1,68 @@
 .AddNote {
+  width: 300px;
+  /* min-height: 50px; */
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid gray;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.AddNote > input {
+  width: 100%;
+}
+.AddNote > textarea {
+  height: auto;
+  display: block;
+  height: scrollHight;
+  /* min-height: 100px; */
+  /* max-height: 500px; */
+}
+
+.note_color {
+  display: flex;
+  gap: 5px;
+}
+.note_circle {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  border: 1px solid darkgray;
+}
+
+.note_red {
+  background-color: var(--red);
+}
+.note_orange {
+  background-color: var(--orange);
+}
+.note_yellow {
+  background-color: var(--yellow);
+}
+.note_olive {
+  background-color: var(--olive);
+}
+.note_green {
+  background-color: var(--green);
+}
+.note_bluegreen {
+  background-color: var(--bluegreen);
+}
+.note_cyan {
+  background-color: var(--cyan);
+}
+.note_skyblue {
+  background-color: var(--skyblue);
+}
+.note_blue {
+  background-color: var(--blue);
+}
+.note_violet {
+  background-color: var(--violet);
+}
+.note_pink {
+  background-color: var(--pink);
 }

@@ -17,9 +17,11 @@ export const notesReducer = (state = notesInitialState, action) => {
 
 export const appReducer = (state = appInitialState, action) => {
   switch (action.type) {
-    case Actions.SHOW_ADD_NOTE: {
-      return { ...state, showAddNote: !state.showAddNote };
+    case Actions.SHOW_ADD_NOTE:
+    case Actions.HIDE_ADD_NOTE: {
+      return { ...state, showAddNote: action.payload };
     }
+
     default:
       return state;
   }

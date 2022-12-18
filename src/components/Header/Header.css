@@ -7,3 +7,7 @@
   top: 0px;
   /* border: 1px solid red; */
 }
+
+.header > input {
+  width: 300px;
+}
