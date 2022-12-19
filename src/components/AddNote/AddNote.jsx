@@ -33,8 +33,10 @@ const AddNote = () => {
       dispatch(add_Note(note));
       setNote((prev) => ({ ...prev, title: "", desc: "" }));
     }
-    //reset addnote background
+    //reset
     setColor("white");
+    setNote((prev) => ({ ...prev, color: "var(--yellow)" }));
+
     dispatch(hide_AddNote());
   };
 
