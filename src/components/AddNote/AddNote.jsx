@@ -1,36 +1,60 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OutsideAlerter from "../../CustomHook/customHook";
 import TextareaAutosize from "react-textarea-autosize";
-import { add_Note, hide_AddNote, show_AddNote } from "../../redux/actions";
+import {
+  add_Note,
+  hide_AddNote,
+  reset_selected,
+  show_AddNote,
+  update_Note,
+} from "../../redux/actions";
 import "./AddNote.css";
 
 const AddNote = () => {
-  const [note, setNote] = useState({
+  const showAddNote = useSelector((state) => state.app.showAddNote);
+  const notes = useSelector((state) => state.notes.notes);
+  let selectedNote = useSelector((state) => state.notes.selectedNote);
+  const dispatch = useDispatch();
+
+  let noteInitial = {
     id: 0,
     title: "",
     desc: "",
     color: "var(--yellow)",
-  });
+  };
+
+  const [note, setNote] = useState(null);
   const [id, setId] = useState(0);
   const [color, setColor] = useState("white");
 
-  const showAddNote = useSelector((state) => state.app.showAddNote);
-  const notes = useSelector((state) => state.notes.notes);
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (selectedNote !== null) {
+      setNote(selectedNote);
+      setId(selectedNote.id);
+    }
+  }, [selectedNote]);
 
   const handleShow = () => {
     dispatch(show_AddNote());
   };
 
-  const handleHide = () => {
+  const saveNote = () => {
     if (
       (typeof note.title !== "undefined" && note.title.length !== 0) ||
       (typeof note.desc !== "undefined" && note.desc.length !== 0)
     ) {
-      setId((id) => id + 1);
-      dispatch(add_Note(note));
+      if (selectedNote === null) {
+        dispatch(add_Note(note));
+        setId(notes.length + 1);
+      } else {
+        //if same does not update
+        if (selectedNote !== note) {
+          dispatch(update_Note(note));
+          dispatch(reset_selected());
+        }
+      }
       setNote((prev) => ({ ...prev, title: "", desc: "" }));
     }
     //reset
@@ -40,7 +64,7 @@ const AddNote = () => {
     dispatch(hide_AddNote());
   };
 
-  const saveNote = (e) => {
+  const handleInput = (e) => {
     const { name, value } = e.target;
     setNote((prev) => ({ ...prev, id, [name]: value }));
   };
@@ -56,7 +80,7 @@ const AddNote = () => {
       note={note}
       className="AddNote"
       onClick={handleShow}
-      onOutsideClick={handleHide}
+      onOutsideClick={saveNote}
       style={{ backgroundColor: color }}
     >
       {!showAddNote && <span>Add Note</span>}
@@ -66,16 +90,16 @@ const AddNote = () => {
             name="title"
             type="text"
             placeholder="Title"
-            value={note.title}
-            onChange={saveNote}
+            value={note?.title}
+            onChange={handleInput}
           />
           <TextareaAutosize
             className="textarea"
             name="desc"
             id="note"
             placeholder="Take a note..."
-            value={note.desc}
-            onChange={saveNote}
+            value={note?.desc}
+            onChange={handleInput}
           />
           <div className="note_color">
             <div

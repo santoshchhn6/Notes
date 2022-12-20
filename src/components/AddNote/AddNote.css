@@ -8,6 +8,7 @@
   border: 1px solid gray;
   border-radius: 5px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .AddNote > input {
