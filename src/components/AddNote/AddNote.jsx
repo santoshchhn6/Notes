@@ -18,14 +18,12 @@ const AddNote = () => {
   let selectedNote = useSelector((state) => state.notes.selectedNote);
   const dispatch = useDispatch();
 
-  let noteInitial = {
+  const [note, setNote] = useState({
     id: 0,
     title: "",
     desc: "",
     color: "var(--yellow)",
-  };
-
-  const [note, setNote] = useState(null);
+  });
   const [id, setId] = useState(0);
   const [color, setColor] = useState("white");
 
@@ -75,6 +73,7 @@ const AddNote = () => {
     setNote((prev) => ({ ...prev, color }));
   };
 
+  // console.log({ notes });
   return (
     <OutsideAlerter
       note={note}

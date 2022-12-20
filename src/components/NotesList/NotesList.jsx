@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Note from "../Note/Note";
 import "./NotesList.css";
 import { useSelector } from "react-redux";
 
 const NotesList = () => {
+  const [filteredNotes, setFilteredNotes] = useState([]);
   const notes = useSelector((state) => state.notes.notes);
-  //   console.log(notes);
+  const searchTerm = useSelector((state) => state.app.searchTerm);
+
+  useEffect(() => {
+    setFilteredNotes(
+      notes.filter((note) => {
+        if (searchTerm === "") {
+          return note;
+        } else if (
+          ["title", "desc"].some((i) =>
+            note[i]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        )
+          return note;
+      })
+    );
+  }, [notes, searchTerm]);
+
+  console.log("Search:" + searchTerm);
   //   const [notes, setNotes] = useState([
   //     {
   //       id: 1,
@@ -82,7 +100,7 @@ const NotesList = () => {
   //   ]);
   return (
     <div className="NotesList">
-      {notes?.map((note) => (
+      {filteredNotes?.map((note) => (
         <Note key={note.id} note={note} />
       ))}
     </div>

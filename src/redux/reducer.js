@@ -1,8 +1,13 @@
 import { Actions } from "./actions";
 
-export const notesInitialState = { notes: [], selectedNote: null };
+export const notesInitialState = {
+  notes: [],
+
+  selectedNote: null,
+};
 export const appInitialState = {
   showAddNote: false,
+  searchTerm: "",
 };
 
 export const notesReducer = (state = notesInitialState, action) => {
@@ -25,6 +30,7 @@ export const notesReducer = (state = notesInitialState, action) => {
     case Actions.RESET_SELECTED: {
       return { ...state, selectedNote: null };
     }
+
     default:
       return state;
   }
@@ -35,6 +41,9 @@ export const appReducer = (state = appInitialState, action) => {
     case Actions.SHOW_ADD_NOTE:
     case Actions.HIDE_ADD_NOTE: {
       return { ...state, showAddNote: action.payload };
+    }
+    case Actions.SET_SEARCH_TERM: {
+      return { ...state, searchTerm: action.payload };
     }
 
     default:

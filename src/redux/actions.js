@@ -5,6 +5,7 @@ export const Actions = {
   HIDE_ADD_NOTE: "HIDE_ADD_NOTE",
   EDIT_NOTE: "EDIT_NOTE",
   RESET_SELECTED: "RESET_SELECTED",
+  SET_SEARCH_TERM: "SET_SEARCH_TERM",
 };
 
 export const add_Note = (payload) => {
@@ -29,4 +30,8 @@ export const edit_note = (payload) => {
 
 export const reset_selected = () => {
   return { type: Actions.RESET_SELECTED };
+};
+
+export const set_searchTerm = (payload) => {
+  return { type: Actions.SET_SEARCH_TERM, payload: payload };
 };
