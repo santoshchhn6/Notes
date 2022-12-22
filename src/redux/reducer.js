@@ -24,6 +24,12 @@ export const notesReducer = (state = notesInitialState, action) => {
         ],
       };
     }
+    case Actions.DELETE_NOTE: {
+      return {
+        ...state,
+        notes: [...state.notes.filter((note) => note.id !== action.payload)],
+      };
+    }
     case Actions.EDIT_NOTE: {
       return { ...state, selectedNote: action.payload };
     }

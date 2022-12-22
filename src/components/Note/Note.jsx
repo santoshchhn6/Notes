@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { edit_note, show_AddNote } from "../../redux/actions";
 import "./Note.css";
 
@@ -7,9 +6,9 @@ const Note = ({ note }) => {
   const dispatch = useDispatch();
 
   const EditNote = () => {
+    console.log(note.id);
     dispatch(show_AddNote());
     dispatch(edit_note(note));
-    console.log(note.id);
   };
   return (
     <div

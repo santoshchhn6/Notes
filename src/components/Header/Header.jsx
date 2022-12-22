@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { set_filtered_Note, set_searchTerm } from "../../redux/actions";
+import { useDispatch } from "react-redux";
+import { set_searchTerm } from "../../redux/actions";
 import "./Header.css";
 
 const Header = () => {

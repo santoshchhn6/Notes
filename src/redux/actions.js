@@ -1,6 +1,7 @@
 export const Actions = {
   ADD_NOTE: "ADD_NOTE",
   UPDATE_NOTE: "UPDATE_NOTE",
+  DELETE_NOTE: "DELETE_NOTE",
   SHOW_ADD_NOTE: "SHOW_ADD_NOTE",
   HIDE_ADD_NOTE: "HIDE_ADD_NOTE",
   EDIT_NOTE: "EDIT_NOTE",
@@ -14,6 +15,10 @@ export const add_Note = (payload) => {
 
 export const update_Note = (payload) => {
   return { type: Actions.UPDATE_NOTE, payload: payload };
+};
+
+export const delete_Note = (id) => {
+  return { type: Actions.DELETE_NOTE, payload: id };
 };
 
 export const show_AddNote = () => {

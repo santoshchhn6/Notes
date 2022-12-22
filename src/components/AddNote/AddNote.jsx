@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OutsideAlerter from "../../CustomHook/customHook";
 import TextareaAutosize from "react-textarea-autosize";
+import { v4 as uuidv4 } from "uuid";
 import {
   add_Note,
+  delete_Note,
   hide_AddNote,
   reset_selected,
   show_AddNote,
@@ -14,18 +15,23 @@ import "./AddNote.css";
 
 const AddNote = () => {
   const showAddNote = useSelector((state) => state.app.showAddNote);
-  const notes = useSelector((state) => state.notes.notes);
   let selectedNote = useSelector((state) => state.notes.selectedNote);
   const dispatch = useDispatch();
 
-  const [note, setNote] = useState({
+  const initialNote = {
     id: 0,
     title: "",
     desc: "",
     color: "var(--yellow)",
-  });
+  };
+
+  const [note, setNote] = useState(initialNote);
   const [id, setId] = useState(0);
   const [color, setColor] = useState("white");
+
+  useEffect(() => {
+    setId(uuidv4());
+  }, []);
 
   useEffect(() => {
     if (selectedNote !== null) {
@@ -44,16 +50,16 @@ const AddNote = () => {
       (typeof note.desc !== "undefined" && note.desc.length !== 0)
     ) {
       if (selectedNote === null) {
+        //Add Note
         dispatch(add_Note(note));
-        setId(notes.length + 1);
-      } else {
-        //if same does not update
-        if (selectedNote !== note) {
-          dispatch(update_Note(note));
-          dispatch(reset_selected());
-        }
+        setId(uuidv4());
+      } else if (selectedNote !== note) {
+        //Update Note
+        dispatch(update_Note(note));
+        dispatch(reset_selected());
       }
-      setNote((prev) => ({ ...prev, title: "", desc: "" }));
+      //reset note and input
+      setNote(initialNote);
     }
     //reset
     setColor("white");
@@ -71,6 +77,11 @@ const AddNote = () => {
     color = "var(" + color + ")";
     setColor(color);
     setNote((prev) => ({ ...prev, color }));
+  };
+
+  const deleteNote = () => {
+    dispatch(delete_Note(selectedNote.id));
+    setNote(initialNote);
   };
 
   // console.log({ notes });
@@ -146,6 +157,7 @@ const AddNote = () => {
               onClick={() => changeBackground("--pink")}
             ></div>
           </div>
+          {selectedNote && <button onClick={deleteNote}>Delete</button>}
         </>
       )}
     </OutsideAlerter>

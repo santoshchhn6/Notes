@@ -14,13 +14,6 @@
 .AddNote > input {
   width: 100%;
 }
-.AddNote > textarea {
-  height: auto;
-  display: block;
-  height: scrollHight;
-  /* min-height: 100px; */
-  /* max-height: 500px; */
-}
 
 .note_color {
   display: flex;
@@ -32,6 +25,19 @@
   background-color: red;
   border-radius: 50%;
   border: 1px solid darkgray;
+}
+
+button {
+  margin-top: 10px;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid darkgrey;
+  cursor: pointer;
+}
+
+button:hover {
+  background: white;
 }
 
 .note_red {
