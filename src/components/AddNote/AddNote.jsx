@@ -49,16 +49,17 @@ const AddNote = () => {
       (typeof note.title !== "undefined" && note.title.length !== 0) ||
       (typeof note.desc !== "undefined" && note.desc.length !== 0)
     ) {
+      console.log(note.id);
       if (selectedNote === null) {
         //Add Note
         dispatch(add_Note(note));
-        setId(uuidv4());
       } else if (selectedNote !== note) {
         //Update Note
         dispatch(update_Note(note));
         dispatch(reset_selected());
       }
       //reset note and input
+      setId(uuidv4());
       setNote(initialNote);
     }
     //reset
