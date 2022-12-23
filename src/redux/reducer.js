@@ -13,22 +13,31 @@ export const appInitialState = {
 export const notesReducer = (state = notesInitialState, action) => {
   switch (action.type) {
     case Actions.ADD_NOTE: {
-      return { ...state, notes: [...state.notes, action.payload] };
+      const n = { ...state, notes: [...state.notes, action.payload] };
+      setLocalNote(n);
+      return n;
     }
     case Actions.UPDATE_NOTE: {
-      return {
+      const n = {
         ...state,
         notes: [
           ...state.notes.filter((note) => note.id !== action.payload.id),
           action.payload,
         ],
       };
+      setLocalNote(n);
+      return n;
     }
     case Actions.DELETE_NOTE: {
-      return {
+      const n = {
         ...state,
         notes: [...state.notes.filter((note) => note.id !== action.payload)],
       };
+      setLocalNote(n);
+      return n;
+    }
+    case Actions.GET_NOTES: {
+      return { ...state, notes: action.payload };
     }
     case Actions.EDIT_NOTE: {
       return { ...state, selectedNote: action.payload };
@@ -55,4 +64,8 @@ export const appReducer = (state = appInitialState, action) => {
     default:
       return state;
   }
+};
+
+const setLocalNote = (notes) => {
+  localStorage.setItem("notes", JSON.stringify(notes));
 };

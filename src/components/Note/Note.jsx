@@ -6,7 +6,6 @@ const Note = ({ note }) => {
   const dispatch = useDispatch();
 
   const EditNote = () => {
-    console.log(note.id);
     dispatch(show_AddNote());
     dispatch(edit_note(note));
   };
