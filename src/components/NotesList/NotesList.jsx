@@ -12,8 +12,7 @@ const NotesList = () => {
 
   useEffect(() => {
     const n = JSON.parse(localStorage.getItem("notes"));
-    console.log(n);
-    // dispatch(get_Notes());
+    dispatch(get_Notes(n.notes));
   }, []);
 
   useEffect(() => {
