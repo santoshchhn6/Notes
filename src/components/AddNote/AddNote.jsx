@@ -82,6 +82,7 @@ const AddNote = () => {
   const deleteNote = () => {
     dispatch(delete_Note(selectedNote.id));
     setNote(initialNote);
+    dispatch(reset_selected());
   };
 
   // console.log({ notes });

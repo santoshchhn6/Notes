@@ -13,4 +13,5 @@
   height: 90px;
   margin: 5px 0;
   overflow: hidden;
+  white-space: pre-wrap;
 }
