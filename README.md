@@ -1,5 +1,5 @@
 # Notes-React.js
-This is project is created in React.js
+This project is created in React.js
 
 ## Install Dependencies
 ```
