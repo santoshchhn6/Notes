@@ -1,5 +1,7 @@
 # Notes-React.js
-![noteapp](https://user-images.githubusercontent.com/102342620/219931707-d762260a-43c7-42b7-9069-d99a3fd8bb33.png)
+![noteapp](https://user-images.githubusercontent.com/102342620/219931707-d762260a-43c7-42b7-9069-d99a3fd8bb33.png)(https://santoshchhn6.github.io/Notes-Reactjs/)
+
+[DEMO](https://santoshchhn6.github.io/Notes-Reactjs/)
 
 This project is created in React.js
 
