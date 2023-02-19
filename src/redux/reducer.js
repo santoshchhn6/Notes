@@ -1,10 +1,23 @@
 import { Actions } from "./actions";
 
 export const notesInitialState = {
-  notes: [],
-
+  notes: [
+    {
+      id: "53ecde55-b681-4aa4-b052-b8e101c9acb8",
+      title: "Buy",
+      desc: "* Milk\n* Eggs\n* Sugar",
+      color: "var(--green)",
+    },
+    {
+      id: "46eabe55-yv81-5ya4-b074-b8e901c9asd5",
+      title: "Schedule",
+      desc: "6:00 Wake Up\n7:00 Exercise\n8:30 Breakfast\n9:00 Work",
+      color: "var(--red)",
+    },
+  ],
   selectedNote: null,
 };
+
 export const appInitialState = {
   showAddNote: false,
   searchTerm: "",
@@ -14,7 +27,8 @@ export const notesReducer = (state = notesInitialState, action) => {
   switch (action.type) {
     case Actions.ADD_NOTE: {
       const n = { ...state, notes: [...state.notes, action.payload] };
-      setLocalNote(n);
+      //-----------local Storage---------------------
+      // setLocalNote(n);
       return n;
     }
     case Actions.UPDATE_NOTE: {
@@ -25,7 +39,8 @@ export const notesReducer = (state = notesInitialState, action) => {
           action.payload,
         ],
       };
-      setLocalNote(n);
+      //-----------local Storage---------------------
+      // setLocalNote(n);
       return n;
     }
     case Actions.DELETE_NOTE: {
@@ -33,7 +48,8 @@ export const notesReducer = (state = notesInitialState, action) => {
         ...state,
         notes: [...state.notes.filter((note) => note.id !== action.payload)],
       };
-      setLocalNote(n);
+      //-----------local Storage---------------------
+      // setLocalNote(n);
       return n;
     }
     case Actions.GET_NOTES: {
@@ -66,6 +82,7 @@ export const appReducer = (state = appInitialState, action) => {
   }
 };
 
-const setLocalNote = (notes) => {
-  localStorage.setItem("notes", JSON.stringify(notes));
-};
+//-----------local Storage---------------------
+// const setLocalNote = (notes) => {
+//   localStorage.setItem("notes", JSON.stringify(notes));
+// };

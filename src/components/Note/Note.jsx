@@ -9,6 +9,8 @@ const Note = ({ note }) => {
     dispatch(show_AddNote());
     dispatch(edit_note(note));
   };
+
+  console.log({ note });
   return (
     <div
       className="note"

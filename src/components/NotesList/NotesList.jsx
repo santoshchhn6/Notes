@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Note from "../Note/Note";
 import "./NotesList.css";
-import { useDispatch, useSelector } from "react-redux";
-import { get_Notes } from "../../redux/actions";
+import { useSelector } from "react-redux";
 
 const NotesList = () => {
   const [filteredNotes, setFilteredNotes] = useState([]);
   const notes = useSelector((state) => state.notes.notes);
   const searchTerm = useSelector((state) => state.app.searchTerm);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const n = JSON.parse(localStorage.getItem("notes"));
-    dispatch(get_Notes(n.notes));
-  }, []);
+  //------------local Storage----------
+  //import { get_Notes } from "../../redux/actions";
+  //import { useDispatch} from "react-redux";
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   const n = JSON.parse(localStorage.getItem("notes"));
+  //   dispatch(get_Notes(n.notes));
+  // }, [dispatch]);
 
   useEffect(() => {
     if (typeof notes !== "undefined" && notes !== null) {
@@ -21,15 +23,14 @@ const NotesList = () => {
         notes.filter((note) => {
           if (searchTerm === "") {
             return note;
-          } else if (
-            ["title", "desc"].some((i) =>
+          } else {
+            return ["title", "desc"].some((i) =>
               note[i]
                 ?.toString()
                 .toLowerCase()
                 .includes(searchTerm.toLowerCase())
-            )
-          )
-            return note;
+            );
+          }
         })
       );
     }

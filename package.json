@@ -1,5 +1,5 @@
 {
-  "homepage":"http://santoshchhn6.github.io/Notes-React.js",
+  "homepage": "https://santoshchhn6.github.io/Notes-Reactjs",
   "name": "notes",
   "version": "0.1.0",
   "private": true,
@@ -14,8 +14,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build"
   },
   "eslintConfig": {
