@@ -1,6 +1,6 @@
 {
   "homepage":"http://santoshchhn6.github.io/Notes-React.js",
-  "name": "login",
+  "name": "notes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
